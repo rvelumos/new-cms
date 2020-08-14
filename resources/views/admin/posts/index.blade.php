@@ -68,7 +68,12 @@
   </div>
 </div>
 
+<div class="d-flex">
+  <div class='mx-auto mt-5'>
 
+{{$posts->links()}}
+</div>
+</div>
 
 @endsection
 
@@ -78,7 +83,7 @@
   <script src="{{asset('vendor/datatables/dataTables.bootstrap4.min.js')}}"></script>
 
   <!-- Page level custom scripts -->
-  <script src="{{asset('js/demo/datatables-demo.js')}}"></script>
+  <!--<script src="{{asset('js/demo/datatables-demo.js')}}"></script>-->
 
 @endsection
 

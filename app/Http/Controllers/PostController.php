@@ -14,8 +14,9 @@ class PostController extends Controller
 
     public function index(){
         
-        $posts = Post::all();
-        //$posts = auth()->user()->posts;
+        //$posts = Post::all();
+        $posts = auth()->user()->posts()->paginate(1);
+
        // dd($posts);
 
         return view('admin.posts.index', ['posts' => $posts]);
@@ -34,7 +35,8 @@ class PostController extends Controller
     }
 
     public function store(){
-        
+        $this->authorize('create', Post::class);
+
         $inputs = request()->validate([
 
             'title' => 'required|min:12',
@@ -55,11 +57,11 @@ class PostController extends Controller
     }
 
     public function edit(Post $post){
-     //  $this->authorize('view', $post);
+        $this->authorize('view', $post);
 
-        if(auth()->user()->can('view', $post)){
-            
-        }
+        //if(auth()->user()->can('view', $post)){
+
+        //}
 
         return view('admin.posts.edit', ['post'=>$post]);
     }
