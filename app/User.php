@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Roles;
 
 class User extends Authenticatable
 {
@@ -62,6 +63,8 @@ class User extends Authenticatable
 
         return $this->belongsToMany(Role::class);
     }
+
+
 
     public function userHasRole($role_name){
         foreach($this->roles as $role){
